@@ -19,4 +19,16 @@ describe('calculator', function () {
     assert.equal(calculator.runningTotal, 4)
   })
 
+  it('it should multiply 2 & 3 together', function(){
+    calculator.previousTotal = 2;
+    calculator.multiply(3);
+    assert.equal(calculator.runningTotal, 6)
+  })
+
+  it('it should divide 8 by 2', function() {
+    calculator.previousTotal = 8;
+    calculator.divide(2);
+    assert.equal(calculator.runningTotal, 4)
+  })
+
 });
