@@ -13,6 +13,10 @@ describe('calculator', function () {
     assert.equal(calculator.runningTotal, 3)
   })
 
-  
+  it('it should subract 3 from 7', function() {
+    calculator.previousTotal = 7;
+    calculator.subtract(3);
+    assert.equal(calculator.runningTotal, 4)
+  })
 
 });
