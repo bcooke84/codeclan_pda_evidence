@@ -31,4 +31,11 @@ describe('calculator', function () {
     assert.equal(calculator.runningTotal, 4)
   })
 
+  it('it should have a running total of 200', function() {
+    calculator.numberClick(2);
+    calculator.numberClick(0);
+    calculator.numberClick(0);
+    assert.equal(calculator.runningTotal, 200)
+  })
+
 });
