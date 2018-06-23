@@ -54,8 +54,12 @@ Calculator.prototype = {
         this.multiply(this.runningTotal);
         break;
         case ('/'):
-        this.divide(this.runningTotal);
-        break;
+        if(this.runningTotal === 0) {
+          this.divide('NaN')
+        } else {
+          this.divide(this.runningTotal);
+          break;
+        }
       }
     }
 
@@ -69,8 +73,9 @@ Calculator.prototype = {
     // replace the previous total with the current running total and flag that a
     // new total has been calculated
 
-    this.previousTotal = this.runningTotal;
-    this.newTotal = true;
+      this.previousTotal = this.runningTotal;
+      this.newTotal = true;
+    // }
   },
 
   clearClick: function() {

@@ -16,7 +16,7 @@ describe('calculator functionality', function() {
     expect(running_total.getAttribute('value')).to.eventually.equal('2')
   })
 
-  it('should add 1 & 4 together', function(){
+  it('should add 1 + 4 and get 5', function(){
     running_total = element(by.css('#running_total'))
     element(by.css('#number1')).click();
     element(by.css('#operator_add')).click();
@@ -25,6 +25,79 @@ describe('calculator functionality', function() {
     expect(running_total.getAttribute('value')).to.eventually.equal('5')
   })
 
+  it('should subtract 7 - 4 and get 3', function(){
+    running_total = element(by.css('#running_total'))
+    element(by.css('#number7')).click();
+    element(by.css('#operator_subtract')).click();
+    element(by.css('#number4')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('3')
+  })
 
+  it('should multiply 3 x 5 and get 15', function(){
+    running_total = element(by.css('#running_total'))
+    element(by.css('#number3')).click();
+    element(by.css('#operator_multiply')).click();
+    element(by.css('#number5')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('15')
+  })
 
+  it('should divide 21 / 7 and get 3', function(){
+    running_total = element(by.css('#running_total'))
+    element(by.css('#number2')).click();
+    element(by.css('#number1')).click();
+    element(by.css('#operator_divide')).click();
+    element(by.css('#number7')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('3')
+  })
+
+  it('should concatenate multiple number button clicks', function(){
+    running_total = element(by.css('#running_total'))
+    element(by.css('#number2')).click();
+    element(by.css('#number1')).click();
+    element(by.css('#number7')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('217')
+  })
+
+  it('should chain multiple operations together', function(){
+    running_total = element(by.css('#running_total'))
+    element(by.css('#number6')).click();
+    element(by.css('#operator_add')).click();
+    element(by.css('#number4')).click();
+    element(by.css('#operator_subtract')).click();
+    element(by.css('#number2')).click();
+    element(by.css('#operator_multiply')).click();
+    element(by.css('#number3')).click();
+    element(by.css('#operator_divide')).click();
+    element(by.css('#number1')).click();
+    element(by.css('#number2')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('2')
+  })
+
+  it('should clear the running total without affecting the calculation', function(){
+    running_total = element(by.css('#running_total'))
+    element(by.css('#number1')).click();
+    element(by.css('#number3')).click();
+    element(by.css('#operator_subtract')).click();
+    element(by.css('#number1')).click();
+    element(by.css('#number2')).click();
+    element(by.css('#clear')).click();
+    element(by.css('#number5')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('8')
+  })
+
+  it('should return NaN when dividing by zero', function(){
+    running_total = element(by.css('#running_total'))
+    element(by.css('#number1')).click();
+    element(by.css('#number0')).click();
+    element(by.css('#operator_divide')).click();
+    element(by.css('#number0')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('NaN')
+  })
 });
