@@ -1,13 +1,13 @@
+def printAllKeysAndValues(hash)
+  hash.each do |key, value|
+    puts "The key is #{key} and the value is #{value}."
+  end
+end
+
 new_hash = {
-      name: "Brian",
-      lottery: [7, 10, 13, 25, 30, 48],
-      hometown: "Inverness",
-    }
+  name: "Brian",
+  lottery: [7, 10, 13, 25, 30, 48],
+  hometown: "Inverness",
+}
 
-puts new_hash
-
-puts
-
-new_hash [:twitter] = "bjc67"
-
-p new_hash
+puts  printAllKeysAndValues(new_hash)
